@@ -1,5 +1,5 @@
 import { v7, validate } from "uuid";
-import { AppError } from "../application/app-error";
+import { AppError } from "../application/utils/app-error";
 
 export type TBaseEntity = {
   id: string;
