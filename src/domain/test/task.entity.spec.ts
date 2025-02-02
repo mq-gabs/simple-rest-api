@@ -21,4 +21,22 @@ describe("Test Task Entity", () => {
 
     expect(task.title).toBe(secondTitle);
   });
+
+  test("create a task using other task props", () => {
+    const task = new TaskEntity({
+      title: "Do some task",
+      description: "Do some task description",
+    });
+
+    const otherTask = new TaskEntity({
+      title: "Do another task",
+      description: "Do another task description",
+    });
+
+    otherTask.copyFrom(task);
+
+    expect(otherTask.title).toBe(task.title);
+    expect(otherTask.description).toBe(task.description);
+    expect(otherTask.id).not.toBe(task.id);
+  });
 });

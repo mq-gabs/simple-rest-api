@@ -28,6 +28,11 @@ export class TaskEntity extends BaseEntity {
     this.status = this.props.status || EStatus.PENDING;
   }
 
+  public copyFrom(originalTask: TaskEntity) {
+    this.title = originalTask.title;
+    this.description = originalTask.description;
+  }
+
   public get title(): string {
     return this.props.title;
   }
