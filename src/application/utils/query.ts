@@ -7,7 +7,7 @@ type TQuery = {
 export class Query {
   private props: TQuery;
 
-  constructor(props: Object) {
+  constructor(props?: Object) {
     if (!props) {
       this.props = {} as TQuery;
     }

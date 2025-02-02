@@ -23,8 +23,8 @@ export class TaskEntity extends BaseEntity {
       this.props = {};
     }
 
-    this.title = this.props.title;
-    this.description = this.props.description;
+    this.title = this.props.title || "";
+    this.description = this.props.description || "";
     this.status = this.props.status || EStatus.PENDING;
   }
 
