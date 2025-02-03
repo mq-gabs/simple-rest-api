@@ -1,6 +1,6 @@
 import { BaseEntity, TBaseEntity } from "./base.entity";
 
-enum EStatus {
+export enum ETaskStatus {
   DONE = "DONE",
   PENDING = "PENDING",
   WORKING = "WORKING",
@@ -10,7 +10,7 @@ enum EStatus {
 type TTaskEntityProps = {
   title: string;
   description: string;
-  status: EStatus;
+  status: ETaskStatus;
 };
 
 type TTaskEntity = TTaskEntityProps & TBaseEntity;
@@ -25,12 +25,13 @@ export class TaskEntity extends BaseEntity {
 
     this.title = this.props.title || "";
     this.description = this.props.description || "";
-    this.status = this.props.status || EStatus.PENDING;
+    this.status = this.props.status || ETaskStatus.PENDING;
   }
 
   public copyFrom(originalTask: TaskEntity) {
-    this.title = originalTask.title;
-    this.description = originalTask.description;
+    this.title = originalTask.title || this.title;
+    this.description = originalTask.description || this.description;
+    this.status = originalTask.status || this.status;
   }
 
   public get title(): string {
@@ -49,11 +50,11 @@ export class TaskEntity extends BaseEntity {
     this.props.description = v;
   }
 
-  public get status(): EStatus {
+  public get status(): ETaskStatus {
     return this.props.status;
   }
 
-  public set status(v: EStatus) {
+  public set status(v: ETaskStatus) {
     this.props.status = v;
   }
 }
