@@ -5,9 +5,7 @@ type TQuery = {
 };
 
 export class Query {
-  private props: TQuery;
-
-  constructor(props?: Object) {
+  constructor(private readonly props?: any) {
     if (!props) {
       this.props = {} as TQuery;
     }

@@ -57,4 +57,11 @@ export class TaskEntity extends BaseEntity {
   public set status(v: ETaskStatus) {
     this.props.status = v;
   }
+
+  public toJSON() {
+    return {
+      ...super.toJSON(),
+      ...this.props,
+    };
+  }
 }

@@ -57,4 +57,10 @@ export class BaseEntity {
   public set deleted_at(v: string) {
     this.baseProps.deleted_at = v;
   }
+
+  public toJSON() {
+    return {
+      ...this.baseProps,
+    };
+  }
 }
