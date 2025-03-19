@@ -3,6 +3,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import router from "./controllers";
+import { errorHandler } from "../../application/utils/error-handler";
 
 export function bootstrap() {
   dotenv.config();
@@ -12,6 +13,7 @@ export function bootstrap() {
   app.use(cors());
 
   app.use(router);
+  app.use(errorHandler);
 
   app.listen(process.env.PORT, () => console.log("Express: server started"));
 }

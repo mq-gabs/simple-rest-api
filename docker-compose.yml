@@ -1,6 +1,6 @@
 services:
   simple-rest-api:
-    container_name: simple-rest-api-dev
+    container_name: simple-rest-api
     build:
       context: .
       dockerfile: Dockerfile
@@ -11,5 +11,17 @@ services:
       - type: bind
         source: ./
         target: /app
+  mysql:
+    container_name: simple-rest-api-mysql
+    image: mysql:8.0
+    ports:
+      - 3306:3306
+    volumes:
+      - simple-rest-api-volume:/var/lib/mysql
+      - ./src/infra/repositories/mysql/migration/init.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
-      - PORT=5555
+      - MYSQL_ROOT_PASSWORD=8840
+      - MYSQL_DATABASE=simple_rest_api_db
+
+volumes:
+  simple-rest-api-volume:

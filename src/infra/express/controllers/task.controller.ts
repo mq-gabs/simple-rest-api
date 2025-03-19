@@ -3,10 +3,12 @@ import { Query } from "../../../application/utils/query";
 import { TaskDto } from "../../../application/services/task/dtos/task.dto";
 import { TaskService } from "../../../application/services/task/task.service";
 import { TaskRepositoryMemory } from "../../repositories/memory/task.repository.memory";
+import { TaskRepositoryMysql } from "../../repositories/mysql/task.repository.mysql";
 
 export const taskRouter = Router();
 
-const repo = new TaskRepositoryMemory();
+// const repo = new TaskRepositoryMemory();
+const repo = new TaskRepositoryMysql();
 const taskService = new TaskService(repo);
 
 taskRouter.get("/", async (req: Request, res: Response) => {
