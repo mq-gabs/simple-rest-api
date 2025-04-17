@@ -6,11 +6,6 @@ services:
       dockerfile: Dockerfile
     ports:
       - 5555:5555
-    working_dir: /app
-    volumes:
-      - type: bind
-        source: ./
-        target: /app
   mysql:
     container_name: simple-rest-api-mysql
     image: mysql:8.0

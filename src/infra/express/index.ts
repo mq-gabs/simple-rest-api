@@ -15,5 +15,7 @@ export function bootstrap() {
   app.use(router);
   app.use(errorHandler);
 
-  app.listen(process.env.PORT, () => console.log("Express: server started"));
+  app.listen(process.env.PORT, () =>
+    console.log("Express: server started")
+  );
 }
